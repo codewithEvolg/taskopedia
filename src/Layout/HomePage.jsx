@@ -17,6 +17,10 @@ const HomePage = () => {
   //     console.log("Runs once when the Component loads");
   //   }, []);
 
+  //   useEffect(() => {
+  //   console.log("changes when component loads and subsequently when counter changes!");
+  // }, [counter]);
+
   useEffect(() => {
     if (counter === 5) {
       setGameStatus("You Won!");
