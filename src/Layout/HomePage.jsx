@@ -106,6 +106,8 @@ const HomePage = () => {
             Log
           </button>
         </div>
+        {/*conditional rendering */}
+        {!isGameOver && <h2>...calculating</h2>}
       </div>
 
       <Footer />
