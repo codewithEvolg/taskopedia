@@ -1,5 +1,5 @@
 import { Footer } from "./Footer";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import plusImage from "../images/plus.jpg";
 import minusImage from "../images/minus.png";
 
@@ -9,32 +9,32 @@ const HomePage = () => {
 
   const isGameOver = gameStatus === "You Won!" || gameStatus === "You Lose!";
 
+  //   useEffect(() => {
+  //     console.log("Runs after every render");
+  //   });
+
+  //   useEffect(() => {
+  //     console.log("Runs once when the Component loads");
+  //   }, []);
+
+  useEffect(() => {
+    if (counter === 5) {
+      setGameStatus("You Won!");
+    } else if (counter === -5) {
+      setGameStatus("You Lose!");
+    } else {
+      setGameStatus("");
+    }
+  }, [counter]);
+
   const handleIncrement = () => {
     if (isGameOver) return; // do nothing if game is over
-
-    setCounter((prev) => {
-      const newValue = prev + 1;
-      if (newValue === 5) {
-        setGameStatus("You Won!");
-      } else {
-        setGameStatus("");
-      }
-      return newValue;
-    });
+    setCounter((prev) => prev + 1);
   };
 
   const handleDecrement = () => {
     if (isGameOver) return; // do nothing if game is over
-
-    setCounter((prev) => {
-      const newValue = prev - 1;
-      if (newValue === -5) {
-        setGameStatus("You Lose!");
-      } else {
-        setGameStatus("");
-      }
-      return newValue;
-    });
+    setCounter((prev) => prev - 1);
   };
 
   const handleRandomPlay = () => {
